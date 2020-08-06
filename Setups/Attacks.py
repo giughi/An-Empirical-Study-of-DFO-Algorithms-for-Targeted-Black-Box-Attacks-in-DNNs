@@ -1,20 +1,7 @@
 """
-conda activate Adv_Attacks_cpu
-cd ./Documents/GITBOBY/A-Model-Based-Derivative-Free-Approach-to-Black-Box-Adversarial-Examples-BOBYQA/
-python Setups/Madry_attacks.py --attack=square --max_f=1.3 --rounding=True --test_size=1200 --save=True  --dataset=cifar10 --subspace_attack=True --subspace_dimension=200 --Adversary_trained=False --eps=0.05
-
-conda activate Adv_Attacks_source_pytorch
-cd ./Documents/GITBOBY/A-Model-Based-Derivative-Free-Approach-to-Black-Box-Adversarial-Examples-BOBYQA/
-python Setups/Madry_attacks.py --attack=square --max_f=1.3 --rounding=True --test_size=300 --save=True --dataset=ImageNet --subspace_attack=False  --Adversary_trained=False --eps=0.05
-
-conda activate Adv_Attacks_source_pytorch
-cd ./Documents/GITBOBY/A-Model-Based-Derivative-Free-Approach-to-Black-Box-Adversarial-Examples-BOBYQA/
-python Setups/Madry_attacks.py --test_size=400  --dataset=ImageNet --Adversary_trained=True --attack=square
-
-
-python Setups/Madry_attacks.py --attack=boby --Adversary_trained=False --test_size=1200 --dataset=cifar10
+This Script allows to run attacks to nets trained on either ImageNet or Cifar10 with or without the
+adversary defence by MadryLab. 
 """
-# coding: utf-8
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
