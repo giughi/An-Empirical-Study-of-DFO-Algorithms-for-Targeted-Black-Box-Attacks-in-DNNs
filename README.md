@@ -20,6 +20,19 @@ conda env create -f Adv_Attacks_GPU.yml
 # Without GPU 
 conda env create -f Adv_Attacks_CPU.yml 
 ```
+Note that if using the CPUs, the robustness package has to be modified to allow it to load with the cpu device. To do this, open the robustness/model_utils.py documnet and 
+in the fucntion make_and_restore_model comment out the line 
+```
+model = model.cuda() 
+```
+and modify the line 
+```
+checkpoint = ch.load(resume_path, pickle_module=dill)
+```
+to
+```
+checkpoint = ch.load(resume_path, pickle_module=dill,map_location=ch.device('cpu'))
+```
 
 ### Downloading the Datasets
 
@@ -105,7 +118,7 @@ There is a unique script whihc will run all of the different attacks that we mig
 - 'resize_dim' -- Reduced dimension for dimensionality reduction.
 - 'adaptive' -- Turns on the dynamic scaling of mutation prameters.
 
-###FW parameters
+### FW parameters
 - 'att_iter' -- Attack_Iterations.
 - 'grad_est_batch_size' -- Dimension of batch for gradient estimation.
 - 'l_r' -- Learning Rate.
