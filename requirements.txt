@@ -1,14 +1,11 @@
-scipy==0.19
 python==3.6
-tensorflow==1.13
-keras
 pandas
-opencv
 numpy
 numba
 
-
-conda install tensorflow=1.14 keras scipy=1.1
-pip install robustness
-pip install opencv-python
-pip install Py-BOBYQA
+pytorch==1.2.0
+torchvision==0.4.0
+tensorflow=1.14 keras scipy=1.1
+robustness
+opencv-python
+Py-BOBYQA
