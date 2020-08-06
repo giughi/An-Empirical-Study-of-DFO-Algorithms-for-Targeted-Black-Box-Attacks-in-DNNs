@@ -1,5 +1,6 @@
-# A-Model-Based-Derivative-Free-Approach-to-Black-Box-Adversarial-Examples-BOBYQA
-Scripts that allow the reproduction of the results presented in the manuscript "A Model-Based Derivative-Free Approach to Black-Box Adversarial Examples: BOBYQA".
+# An Empirical Study of DFO Algorithms for Targeted Black Box Attacks in DNNs
+
+This repository contains the scripts that allow the reproduction of the comparative results in the manuscript "An Empirical Study of Derivative Free Optimization Algorithms for Targeted Black Box Attacks in Deep Neural Networks".
 
 
 ## Getting Started
@@ -10,6 +11,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```
 pip install -r requirements.txt 
+```
+
+Alternatively, one can directly uplaod one of the following conda environments according to the accessability to a GPU.
+```
+# With GPU
+conda env create -f Adv_Attacks_GPU.yml 
+# Without GPU 
+conda env create -f Adv_Attacks_CPU.yml 
 ```
 
 ### Installing
