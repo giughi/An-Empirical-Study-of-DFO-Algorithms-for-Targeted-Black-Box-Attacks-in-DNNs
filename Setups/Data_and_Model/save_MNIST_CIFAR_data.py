@@ -28,3 +28,13 @@ if not os.path.isdir('Models'):
 if not os.path.isdir('Data'):
     os.makedirs('Data')
 
+
+if not os.path.isdir('Data/CIFAR-10'):
+    os.makedirs('Data/CIFAR-10')
+
+if not os.path.exists(main_dir + "/Data/CIFAR-10/cifar-10-batches-bin"):
+    print('Downloading the Dataset')
+    urllib.request.urlretrieve("https://www.cs.toronto.edu/~kriz/cifar-10-binary.tar.gz",
+                                main_dir + '/Data/CIFAR-10/cifar-data.tar.gz')
+    command = "tar -xzvf " + main_dir + "/Data/CIFAR-10/cifar-data.tar.gz -C "+ main_dir + "/Data/CIFAR-10"
+    os.popen(command).read()

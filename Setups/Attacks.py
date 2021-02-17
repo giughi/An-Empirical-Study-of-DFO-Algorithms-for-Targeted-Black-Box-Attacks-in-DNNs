@@ -17,8 +17,8 @@ import time
 
 import pickle
 
-from Setups.Data_and_Model.setup_cifar import CIFAR#, CIFARModel
-from Setups.Data_and_Model.setup_mnist import MNIST#, MNISTModel
+from Setups.Data_and_Model.setup_cifar import CIFAR, CIFARModel
+from Setups.Data_and_Model.setup_mnist import MNIST, MNISTModel
 from Setups.Data_and_Model.setup_inception_2 import ImageNet
 from Setups.Data_and_Model.wrapper_model_loss_f import wrapper_model, wrapper_loss
 
