@@ -65,4 +65,40 @@ class MNIST:
         self.train_data = train_data[VALIDATION_SIZE:, :, :, :]
         self.train_labels = train_labels[VALIDATION_SIZE:]
 
+class MNISTModel:
+    def __init__(self, restore = None, session=None, use_log=False):
+        self.num_channels = 1
+        self.image_size = 28
+        self.num_labels = 10
 
+        model = Sequential()
+
+        model.add(Conv2D(32, (3, 3),
+                         input_shape=(28, 28, 1)))
+        model.add(Activation('relu'))
+        model.add(Conv2D(32, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+        
+        model.add(Conv2D(64, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(Conv2D(64, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+        
+        model.add(Flatten())
+        model.add(Dense(200))
+        model.add(Activation('relu'))
+        model.add(Dense(200))
+        model.add(Activation('relu'))
+        model.add(Dense(10))
+        # output log probability, used for black-box attack
+#         if use_log:
+#             model.add(Activation('softmax'))
+        if restore:
+            model.load_weights(restore)
+
+        self.model = model
+
+    def predict(self, data):
+        return self.model(data)

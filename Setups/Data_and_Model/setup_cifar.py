@@ -93,4 +93,43 @@ class CIFAR:
         self.validation_labels = train_labels[:VALIDATION_SIZE]
         self.train_data = train_data[VALIDATION_SIZE:, :, :, :]
         self.train_labels = train_labels[VALIDATION_SIZE:]
+        
+class CIFARModel:
+    def __init__(self, restore=None, session=None, use_log=False):
+        self.num_channels = 3
+        self.image_size = 32
+        self.num_labels = 10
+
+        model = Sequential()
+
+        model.add(Conv2D(64, (3, 3),
+                                input_shape=(32, 32, 3)))
+        model.add(Activation('relu'))
+        model.add(Conv2D(64, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+        
+        model.add(Conv2D(128, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(Conv2D(128, (3, 3)))
+        model.add(Activation('relu'))
+        model.add(MaxPooling2D(pool_size=(2, 2)))
+        
+        model.add(Flatten())
+        model.add(Dense(256))
+        model.add(Activation('relu'))
+        model.add(Dense(256))
+        model.add(Activation('relu'))
+        model.add(Dense(10))
+        if use_log:
+            model.add(Activation('softmax'))
+        if restore:
+            model.load_weights(restore)
+
+        self.model = model
+
+    def predict(self, data):
+        return self.model(data)
+        
+    
 
